@@ -15,37 +15,15 @@
     // Once all dependencies are fetched, `zig build` no longer requires
     // internet connectivity.
     .dependencies = .{
-        // See `zig fetch --save <url>` for a command-line interface for adding dependencies.
-        //.example = .{
-        //    // When updating this field to a new URL, be sure to delete the corresponding
-        //    // `hash`, otherwise you are communicating that you expect to find the old hash at
-        //    // the new URL.
-        //    .url = "https://example.com/foo.tar.gz",
-        //
-        //    // This is computed from the file contents of the directory of files that is
-        //    // obtained after fetching `url` and applying the inclusion rules given by
-        //    // `paths`.
-        //    //
-        //    // This field is the source of truth; packages do not come from a `url`; they
-        //    // come from a `hash`. `url` is just one of many possible mirrors for how to
-        //    // obtain a package matching this `hash`.
-        //    //
-        //    // Uses the [multihash](https://multiformats.io/multihash/) format.
-        //    .hash = "...",
-        //
-        //    // When this is provided, the package is found in a directory relative to the
-        //    // build root. In this case the package's hash is irrelevant and therefore not
-        //    // computed. This field and `url` are mutually exclusive.
-        //    .path = "foo",
-        //},
+        .zgl = .{
+            .url = "https://github.com/ziglibs/zgl/archive/7c340ba619b05cf3e898a92f13d88bcaa231df83.tar.gz",
+            .hash = "1220f52e9617bd712ff5b3dee9a908e15f50adfc5c7a13df12a0fc1e6997d8783440",
+        },
+        .mach_glfw = .{
+            .url = "https://pkg.machengine.org/mach-glfw/42fe7ee494d36bee8a82c1563c291d8314a41823.tar.gz",
+            .hash = "1220a72c54b4a3674a1e5a907ac6ea33d1868681f187f5a07f3cfb562ff7cf2c63e0",
+        },
     },
-
-    // Specifies the set of files and directories that are included in this package.
-    // Only files and directories listed here are included in the `hash` that
-    // is computed for this package.
-    // Paths are relative to the build root. Use the empty string (`""`) to refer to
-    // the build root itself.
-    // A directory listed here means that all files within, recursively, are included.
     .paths = .{
         // This makes *all* files, recursively, included in this package. It is generally
         // better to explicitly list the files and directories instead, to insure that
