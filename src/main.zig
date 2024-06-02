@@ -12,10 +12,8 @@ pub fn main() !void {
 
     // Wait for the user to close the window.
     while (!window.shouldClose()) {
-        window.swapBuffers();
-        glfw.pollEvents();
-
-        gl.Clear(gl.COLOR_BUFFER_BIT);
+        window_service.main_loop(window);
+        render_service.main_loop();
     }
 
     cleanup(window);

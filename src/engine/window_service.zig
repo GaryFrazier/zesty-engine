@@ -41,9 +41,14 @@ pub fn init() anyerror!glfw.Window {
     return window;
 }
 
+pub fn main_loop(window: *glfw.Window) void {
+    window.swapBuffers();
+    glfw.pollEvents();
+}
+
 pub fn cleanup(window: *glfw.Window) void {
     gl.makeProcTableCurrent(null);
     glfw.makeContextCurrent(null);
-    window.*.destroy();
+    window.destroy();
     glfw.terminate();
 }
